@@ -121,7 +121,14 @@ namespace TheaterSeatReservation
         {
             //Saleep Shrestha
             //w10167735
-            //I am working on the Feature to bulk (range) reserve seats
+            //I am working on the Feature to bulk reserve a range of seats
+            // Finished Working On The Feature And The Feature Successfully Reserves Seat Ranges When Valid
+            // Proper Error Handling: When Input Format is Invalid - Displays "Invalid format" Error
+            // Proper Error Handling: When Seats Are in Different Rows - Displays "Same row" Error
+            // Proper Error Handling: When Start Column > End Column - Displays "Start before end" Error
+            // Proper Error Handling: When Any Seat in Range is Already Reserved - Displays "Unavailable" Error
+            // Successfully Reserves All Seats in Range When Valid and Available
+            
             string seatRange = await DisplayPromptAsync("Reserve Seat Range", 
                 "Enter range (e.g., A1:A4):", "OK", "Cancel", "A1:A4");
             
@@ -129,7 +136,7 @@ namespace TheaterSeatReservation
             {
                 try
                 {
-                    // Split input into start/end seats
+
                     string[] seats = seatRange.Split(':');
                     if (seats.Length != 2)
                     {
@@ -140,48 +147,47 @@ namespace TheaterSeatReservation
                     string startSeat = seats[0].Trim().ToUpper();
                     string endSeat = seats[1].Trim().ToUpper();
 
-                    // Validate seat format
                     if (!IsValidSeat(startSeat) || !IsValidSeat(endSeat))
                     {
                         await DisplayAlert("Error", "Invalid seat format", "OK");
                         return;
                     }
                     
-                    // Parse components
+    
                     char startRow = startSeat[0];
                     char endRow = endSeat[0];
-                    int startCol = int.Parse(startSeat.Substring(1)) - 1; // Convert to 0-based index
+                    int startCol = int.Parse(startSeat.Substring(1)) - 1; 
                     int endCol = int.Parse(endSeat.Substring(1)) - 1;
 
-                    // Validate same row
+
                     if (startRow != endRow)
                 {
                     await DisplayAlert("Error", "Seats must be in the same row", "OK");
                     return;
                 }
 
-                // Validate column order
+
                 if (startCol > endCol)
                 {
                     await DisplayAlert("Error", "Start seat must be before end seat", "OK");
                     return;
                 }
 
-                // Convert row letter to index (A=0, B=1, etc.)
+
                 int rowIndex = startRow - 'A';
             
-                // Validate row exists
+
                 if (rowIndex < 0 || rowIndex >= seatingChart.GetLength(0))
                 {
                     await DisplayAlert("Error", "Invalid row", "OK");
                     return;
                 }
 
-                // Check all seats in range
+ 
                 bool allAvailable = true;
                 for (int col = startCol; col <= endCol; col++)
                 {
-                    // Validate column exists
+
                     if (col < 0 || col >= seatingChart.GetLength(1))
                     {
                         allAvailable = false;
@@ -197,7 +203,7 @@ namespace TheaterSeatReservation
 
                 if (allAvailable)
                 {
-                    // Reserve all seats
+     
                     for (int col = startCol; col <= endCol; col++)
                     {
                         seatingChart[rowIndex, col].Reserved = true;
@@ -207,7 +213,7 @@ namespace TheaterSeatReservation
                 }
                 else
                 {
-                    await DisplayAlert("Error", "One or more seats are unavailable", "OK");
+                    await DisplayAlert("Error", "One or more seats are unavailable please re-check", "OK");
                 }
             }
             catch (Exception ex)
@@ -217,7 +223,7 @@ namespace TheaterSeatReservation
         }
     }
 
-    // Add this helper method below GenerateSeatingNames()
+
     private bool IsValidSeat(string seat)
     {
         if (string.IsNullOrEmpty(seat) || seat.Length < 2)
@@ -234,6 +240,7 @@ namespace TheaterSeatReservation
 
         return col >= 1 && col <= 10;
             }
+    
 
         // Implemented By Rabindra Giri
         private async void ButtonCancelReservation(object sender, EventArgs e)
