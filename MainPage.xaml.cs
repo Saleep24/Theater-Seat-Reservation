@@ -287,12 +287,12 @@ namespace TheaterSeatReservation
             /*
              * Himanshu Shah
              * W10172087
-             * Finished Working On The Feature And The Feature Successfully Reserves Seat Ranges When Valid
+             * Finished Working On The Feature And The Feature Successfully Cancels Seat Reservations for Valid Ranges
              * Proper Error Handling: When Input Format is Invalid - Displays "Invalid format" Error
              * Proper Error Handling: When Seats Are in Different Rows - Displays "Same row" Error
              * Proper Error Handling: When Start Column > End Column - Displays "Start before end" Error
-             * Proper Error Handling: When Any Seat in Range is Already Reserved - Displays "Unavailable" Error
-             * Successfully Reserves All Seats in Range When Valid and Available
+             * Proper Error Handling: When Any Seat in Range is Not Reserved - Displays "Not reserved" Error
+             * Successfully Cancels Reservations for All Seats in Range When Valid and Fully Reserved
              */
 
             string seatRange = await DisplayPromptAsync("Cancel Reservation Range",
