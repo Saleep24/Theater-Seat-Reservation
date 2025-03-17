@@ -125,7 +125,12 @@ namespace TheaterSeatReservation
         //Assign to Team 2 Member
         private void ButtonCancelReservation(object sender, EventArgs e)
         {
+            // Rabindra Giri
+            // w10176279
+            // I am working on the feature to cancel reservation 
+            
 
+        
         }
 
         //Assign to Team 3 Member
