@@ -116,7 +116,7 @@ namespace TheaterSeatReservation
             }
         }
 
-        //Assign to Team 1 Member
+        //Implemented by Saleep Shrestha
         private void ButtonReserveRange(object sender, EventArgs e)
         {
             //a comment
