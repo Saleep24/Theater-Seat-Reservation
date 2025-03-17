@@ -123,12 +123,32 @@ namespace TheaterSeatReservation
         }
 
         //Assign to Team 2 Member
-        private void ButtonCancelReservation(object sender, EventArgs e)
+        private async void ButtonCancelReservation(object sender, EventArgs e)
         {
             // Rabindra Giri
             // w10176279
             // I am working on the feature to cancel reservation 
-            
+            var seat = await DisplayPromptAsync("Enter A Seat Number To Remove", "Enter seat number: ");
+
+            if (seat != null)
+            {
+                
+                for (int i = 0; i < seatingChart.GetLength(0); i++)
+                {
+                    for (int j = 0; j < seatingChart.GetLength(1); j++)
+                    {
+                        if (seatingChart[i, j].Name == seat)
+                        {
+                            if(seatingChart[i, j].Reserved == false){
+                            await DisplayAlert("Error No Reservation For That Seat Found", "You are lucky there is no reservations for that seat.", "Ok");
+                            return;
+                            }
+                        }
+                    }
+                }
+
+            }
+            await DisplayAlert("Error", "Seat was not found.", "Ok");
 
         
         }
