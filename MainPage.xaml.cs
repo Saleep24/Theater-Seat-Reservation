@@ -281,9 +281,20 @@ namespace TheaterSeatReservation
             await DisplayAlert("Error", "Seat was not found.", "Ok");
         }
 
-        //Assign to Team 3 Member
+        //Implemented by Himanshu Shah
         private async void ButtonCancelReservationRange(object sender, EventArgs e)
         {
+            /*
+             * Himanshu Shah
+             * W10172087
+             * Finished Working On The Feature And The Feature Successfully Reserves Seat Ranges When Valid
+             * Proper Error Handling: When Input Format is Invalid - Displays "Invalid format" Error
+             * Proper Error Handling: When Seats Are in Different Rows - Displays "Same row" Error
+             * Proper Error Handling: When Start Column > End Column - Displays "Start before end" Error
+             * Proper Error Handling: When Any Seat in Range is Already Reserved - Displays "Unavailable" Error
+             * Successfully Reserves All Seats in Range When Valid and Available
+             */
+
             string seatRange = await DisplayPromptAsync("Cancel Reservation Range",
                 "Enter range (e.g., A1:A4):", "OK", "Cancel", "A1:A4");
 
