@@ -143,6 +143,12 @@ namespace TheaterSeatReservation
                             await DisplayAlert("Error No Reservation For That Seat Found", "You are lucky there is no reservations for that seat.", "Ok");
                             return;
                             }
+                            else if(seatingChart[i, j].Reserved == true){
+                            seatingChart[i, j].Reserved = false;
+                            await DisplayAlert("Successfully Unreserverd", "The seat reservation was cancelled!", "Ok");
+                            RefreshSeating();
+                            return;
+                            }
                         }
                     }
                 }
