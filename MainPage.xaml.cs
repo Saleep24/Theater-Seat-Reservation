@@ -122,10 +122,43 @@ namespace TheaterSeatReservation
             //a comment
         }
 
-        //Assign to Team 2 Member
-        private void ButtonCancelReservation(object sender, EventArgs e)
+        // Implemented By Rabindra Giri
+        private async void ButtonCancelReservation(object sender, EventArgs e)
         {
+            // Rabindra Giri
+            // w10176279
+            // I am working on the feature to cancel reservation 
+            // Finished Working On The Feature And The Feature Successfully UnReserves A Seat If Seat Is Reserved
+            // Proper Error Handling: When Seat Number is Invalid : Displays Error No Seat Found
+            // Proper Error Handling: When Seat Number is Valid But Unreserved: Displays Error Seat is Unreserved
+            // Successfully UnReserves The Seat When The Seat Is Valid and Is Reserved
+            var seat = await DisplayPromptAsync("Enter A Seat Number To Remove", "Enter seat number: ");
 
+            if (seat != null)
+            {
+                
+                for (int i = 0; i < seatingChart.GetLength(0); i++)
+                {
+                    for (int j = 0; j < seatingChart.GetLength(1); j++)
+                    {
+                        if (seatingChart[i, j].Name == seat)
+                        {
+                            if(seatingChart[i, j].Reserved == false){
+                            await DisplayAlert("Error No Reservation For That Seat Found", "You are lucky there is no reservations for that seat.", "Ok");
+                            return;
+                            }
+                            else if(seatingChart[i, j].Reserved == true){
+                            seatingChart[i, j].Reserved = false;
+                            await DisplayAlert("Successfully Unreserverd", "The seat reservation was cancelled!", "Ok");
+                            RefreshSeating();
+                            return;
+                            }
+                        }
+                    }
+                }
+
+            }
+            await DisplayAlert("Error", "Seat was not found.", "Ok");
         }
 
         //Assign to Team 3 Member
