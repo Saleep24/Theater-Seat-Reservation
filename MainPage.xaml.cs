@@ -281,11 +281,101 @@ namespace TheaterSeatReservation
             await DisplayAlert("Error", "Seat was not found.", "Ok");
         }
 
-        //Assign to Team 3 Member
-        private void ButtonCancelReservationRange(object sender, EventArgs e)
+        //Implemented by Himanshu Shah
+        private async void ButtonCancelReservationRange(object sender, EventArgs e)
         {
+            /*
+             * Himanshu Shah
+             * W10172087
+             * Finished Working On The Feature And The Feature Successfully Cancels Seat Reservations for Valid Ranges
+             * Proper Error Handling: When Input Format is Invalid - Displays "Invalid format" Error
+             * Proper Error Handling: When Seats Are in Different Rows - Displays "Same row" Error
+             * Proper Error Handling: When Start Column > End Column - Displays "Start before end" Error
+             * Proper Error Handling: When Any Seat in Range is Not Reserved - Displays "Not reserved" Error
+             * Successfully Cancels Reservations for All Seats in Range When Valid and Fully Reserved
+             */
 
+            string seatRange = await DisplayPromptAsync("Cancel Reservation Range",
+                "Enter range (e.g., A1:A4):", "OK", "Cancel", "A1:A4");
+
+            if (!string.IsNullOrEmpty(seatRange))
+            {
+                try
+                {
+                    string[] seats = seatRange.Split(':');
+                    if (seats.Length != 2)
+                    {
+                        await DisplayAlert("Error", "Invalid format. Use format like A1:A4", "OK");
+                        return;
+                    }
+
+                    string startSeat = seats[0].Trim().ToUpper();
+                    string endSeat = seats[1].Trim().ToUpper();
+
+                    if (!IsValidSeat(startSeat) || !IsValidSeat(endSeat))
+                    {
+                        await DisplayAlert("Error", "Invalid seat format", "OK");
+                        return;
+                    }
+
+                    char startRow = startSeat[0];
+                    char endRow = endSeat[0];
+                    int startCol = int.Parse(startSeat.Substring(1)) - 1;
+                    int endCol = int.Parse(endSeat.Substring(1)) - 1;
+
+                    if (startRow != endRow)
+                    {
+                        await DisplayAlert("Error", "Seats must be in the same row", "OK");
+                        return;
+                    }
+
+                    if (startCol > endCol)
+                    {
+                        await DisplayAlert("Error", "Start seat must be before end seat", "OK");
+                        return;
+                    }
+
+                    int rowIndex = startRow - 'A';
+
+                    if (rowIndex < 0 || rowIndex >= seatingChart.GetLength(0))
+                    {
+                        await DisplayAlert("Error", "Invalid row", "OK");
+                        return;
+                    }
+
+                    // Check if all seats in the range are reserved
+                    bool allReserved = true;
+                    for (int col = startCol; col <= endCol; col++)
+                    {
+                        if (!seatingChart[rowIndex, col].Reserved)
+                        {
+                            allReserved = false;
+                            break;
+                        }
+                    }
+
+                    if (allReserved)
+                    {
+                        // Unreserve the seats
+                        for (int col = startCol; col <= endCol; col++)
+                        {
+                            seatingChart[rowIndex, col].Reserved = false;
+                        }
+                        RefreshSeating();
+                        await DisplayAlert("Success", $"Cancelled reservations for seats {startSeat} to {endSeat}", "OK");
+                    }
+                    else
+                    {
+                        await DisplayAlert("Error", "One or more seats are not reserved", "OK");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    await DisplayAlert("Error", $"Invalid input: {ex.Message}", "OK");
+                }
+            }
         }
+
 
         //Assign to Team 4 Member
         private void ButtonResetSeatingChart(object sender, EventArgs e)
