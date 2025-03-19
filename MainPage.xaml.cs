@@ -384,6 +384,19 @@ namespace TheaterSeatReservation
             //w10192692
 
             bool confirmReset = await DisplayAlert("Reset Seating Chart", "Are you that you want to reset all seat reservations?", "Yes", "No");
+
+            if (confirmReset)
+            {
+                for (int i = 0; i < seatingChart.GetLength(0); i++)
+                {
+                    for (int j = 0; j < seatingChart.GetLength(1); j++)
+                    {
+                        seatingChart[i, j].Reserved = false;
+                    }
+                }
+                await DisplayAlert("Reset was SUccessful", "All seats are now available", "Ok");
+                RefreshSeating();
+            }
         }
     }
 
