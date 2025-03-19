@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\HP\\source\\repos\\Theater-Seat-Reservation\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{52462C49-36C0-487E-B2BB-DDCAE3529BF0}|TheaterSeatReservation.csproj|c:\\users\\hp\\source\\repos\\theater-seat-reservation\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{52462C49-36C0-487E-B2BB-DDCAE3529BF0}|TheaterSeatReservation.csproj|solutionrelative:.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{52462C49-36C0-487E-B2BB-DDCAE3529BF0}|TheaterSeatReservation.csproj|c:\\users\\hp\\source\\repos\\theater-seat-reservation\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{52462C49-36C0-487E-B2BB-DDCAE3529BF0}|TheaterSeatReservation.csproj|solutionrelative:mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{52462C49-36C0-487E-B2BB-DDCAE3529BF0}|TheaterSeatReservation.csproj|c:\\users\\hp\\source\\repos\\theater-seat-reservation\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{52462C49-36C0-487E-B2BB-DDCAE3529BF0}|TheaterSeatReservation.csproj|solutionrelative:.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{52462C49-36C0-487E-B2BB-DDCAE3529BF0}|TheaterSeatReservation.csproj|c:\\users\\hp\\source\\repos\\theater-seat-reservation\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -26,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,7 +42,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": ".gitignore",
               "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\Theater-Seat-Reservation\\.gitignore",
               "RelativeDocumentMoniker": ".gitignore",
@@ -55,13 +55,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "MainPage.xaml.cs",
               "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\Theater-Seat-Reservation\\MainPage.xaml.cs",
               "RelativeDocumentMoniker": "MainPage.xaml.cs",
               "ToolTip": "C:\\Users\\HP\\source\\repos\\Theater-Seat-Reservation\\MainPage.xaml.cs",
               "RelativeToolTip": "MainPage.xaml.cs",
-              "ViewState": "AgIAAHcBAAAAAAAAAAAuwIIBAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAHcBAAAAAAAAAAAuwIsBAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-19T16:29:37.066Z",
               "EditorCaption": ""
