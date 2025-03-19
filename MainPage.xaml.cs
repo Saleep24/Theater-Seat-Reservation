@@ -377,10 +377,13 @@ namespace TheaterSeatReservation
         }
 
 
-        //Assign to Team 4 Member
-        private void ButtonResetSeatingChart(object sender, EventArgs e)
+        //Implemented by Saqib Mahmood W10192692
+        private async void ButtonResetSeatingChart(object sender, EventArgs e)
         {
+            //Saqib Mahmood
+            //w10192692
 
+            bool confirmReset = await DisplayAlert("Reset Seating Chart", "Are you that you want to reset all seat reservations?", "Yes", "No");
         }
     }
 
